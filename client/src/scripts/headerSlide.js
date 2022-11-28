@@ -1,0 +1,1 @@
+const tl = gsap.timeline({ defaults: { ease: "out" } });

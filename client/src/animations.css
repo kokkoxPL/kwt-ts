@@ -1,0 +1,104 @@
+@keyframes headerImage_appear {
+    0% {
+        position: absolute;
+        top: 0;
+        left: -40%;
+    }
+
+    100% {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes header_block {
+    0% {
+        position: absolute;
+        top: 5%;
+        left: -40%;
+    }
+
+    100% {
+        position: absolute;
+        top: 5%;
+        left: 3%;
+    }
+}
+
+@keyframes kwt {
+    0% {
+        color: black;
+        text-shadow: none;
+    }
+
+    50% {
+        color: rgba(0, 0, 0, .2);
+        text-shadow: 5px 5px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    100% {
+        color: black;
+        text-shadow: none;
+    }
+}
+
+@keyframes kwt2 {
+    0% {
+        color: rgba(0,0,0,.8);
+        text-shadow: none;
+
+        opacity: 0.5;
+    }
+
+    50% {
+        color: rgba(81, 61, 46, .0);
+        text-shadow: 5px 5px 40px rgba(0, 0, 0, 0.6);
+
+        opacity: 0.6;
+    }
+
+    100% {
+        color: rgba(0,0,0,.8);
+        text-shadow: none;
+
+        opacity: 0.5;
+    }
+}
+
+@keyframes header_content {
+    0% {
+        color: white;
+        text-shadow: none;
+    }
+
+    50% {
+        color: rgba(255, 255, 255, .3);
+        text-shadow: 5px 5px 40px white;
+    }
+
+    100% {
+        color: white;
+        text-shadow: none;
+    }
+}
+
+@keyframes shadow{
+    0%{
+        box-shadow: 5px 2px 10px black;
+    }
+
+    25%{
+        box-shadow: 10px 2px 20px black;
+    }
+
+    50%{
+        box-shadow: -10px 2px 20px black;
+    }
+    75%{
+        box-shadow: 10px 2px 20px black;
+    }
+    100%{
+        box-shadow: 5px 2px 10px black;
+    }
+}
