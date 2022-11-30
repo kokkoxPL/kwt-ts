@@ -32,10 +32,7 @@ const Home = () => {
 						</div>
 					</div>
 					<div className="desc">
-						<p>
-							DOŁĄCZ DO KONKURSU I SPRAWDŹ SWOJĄ WIEDZĘ Z WYBRANEJ PRZEZ CIEBIE
-							DZIEDZINY!
-						</p>
+						<p>DOŁĄCZ DO KONKURSU I SPRAWDŹ SWOJĄ WIEDZĘ Z WYBRANEJ PRZEZ CIEBIE DZIEDZINY!</p>
 					</div>
 					<div className="header_button">
 						<div className="sign">

@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
+import { Participant, ParticipantArg } from "../interfaces";
 
-// interface Participants {
-// 	participants: string;
-// 	setParticipants: Dispatch<SetStateAction<string>>;
-// 	id: Number;
-// }
-const Participant = ({ participants, setParticipants, id }: any) => {
+const ParticipantForm = ({ participants, setParticipants, id }: ParticipantArg) => {
 	const [name, setName] = useState("");
 	const [surname, setSurname] = useState("");
 	const [email, setEmail] = useState("");
@@ -16,8 +12,8 @@ const Participant = ({ participants, setParticipants, id }: any) => {
 	}, []);
 
 	useEffect(() => {
-		setParticipants((obj: any) =>
-			obj.map((oldData: any) =>
+		setParticipants((obj: Participant[]) =>
+			obj.map((oldData: Participant) =>
 				oldData.id === id ? { id, name, surname, email } : oldData
 			)
 		);
@@ -25,8 +21,8 @@ const Participant = ({ participants, setParticipants, id }: any) => {
 	}, [name, surname, email]);
 
 	return (
-		<div className="uczestnik" key={id}>
-			<h1>UCZEŃ {id}</h1>
+		<div className="uczestnik">
+			<h1>UCZEŃ {id.toString()}</h1>
 			<input
 				type="text"
 				placeholder="Imię"
@@ -53,4 +49,4 @@ const Participant = ({ participants, setParticipants, id }: any) => {
 	);
 };
 
-export default Participant;
+export default ParticipantForm;

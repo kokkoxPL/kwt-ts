@@ -7,10 +7,11 @@ const router = Router();
 interface Data {
 	captcha: string;
 	name: string;
+	surname: string;
 	email: string;
 	school: string;
 	schoolAddress: string;
-	phone: number;
+	phone: Number;
 	type: string;
 	participants: Object[];
 }
@@ -48,6 +49,7 @@ router.post("/form", (req: Request, res: Response) => {
 		errorFields.push("email");
 	}
 
+	console.log(data.phone.toString().length);
 	if (data.phone.toString().length !== 9) {
 		errorFields.push("phone");
 	}
@@ -59,11 +61,8 @@ router.post("/form", (req: Request, res: Response) => {
 	const form = new Form(data);
 	form
 		.save()
-		.then(() => res.json({}))
-		.catch((err: Error) => {
-			console.log(err.message);
-			return res.status(404).json({ error: err.message, errorFields });
-		});
+		.then(() => res.sendStatus(200))
+		.catch((err: Error) => res.status(404).json({ error: err.message, errorFields }));
 });
 
 router.get("/admin", (req: Request, res: Response) => {

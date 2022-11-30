@@ -5,19 +5,12 @@ const Navbar = () => {
 	const [isActive, setIsActive] = useState(false);
 	const change = () => setIsActive(!isActive);
 
-	const aboutScroll = () => {
-		const element = document.getElementById("about") as HTMLElement;
+	const scroll = (position: string) => {
+		const element = document.getElementById(position) as HTMLElement;
 		element.scrollIntoView({ behavior: "smooth" });
-
 		change();
 	};
 
-	const headerScroll = () => {
-		const element = document.getElementById("header") as HTMLElement;
-		element.scrollIntoView({ behavior: "smooth" });
-
-		change();
-	};
 	return (
 		<div className="menu">
 			<div onClick={change} className="navButton">
@@ -33,10 +26,10 @@ const Navbar = () => {
 					<h1>KWT</h1>
 				</div>
 				<ul>
-					<li onClick={headerScroll}>
+					<li onClick={() => scroll("header")}>
 						<Link to={"/#header"}>STRONA GŁÓWNA</Link>
 					</li>
-					<li onClick={aboutScroll}>
+					<li onClick={() => scroll("about")}>
 						<Link to={"/#about"}>INFORMACJE</Link>
 					</li>
 					<li onClick={change}>

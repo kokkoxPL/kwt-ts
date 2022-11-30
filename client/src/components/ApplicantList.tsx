@@ -1,24 +1,6 @@
 import { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
-
-interface Data {
-	_id: string;
-	name: string;
-	surname: string;
-	school: string;
-	schoolAddress: string;
-	email: string;
-	phone: Number;
-	type: string;
-	participants: Participant[];
-}
-
-interface Participant {
-	id: number;
-	name: string;
-	surname: string;
-	email: string;
-}
+import { Data, Participant } from "../interfaces";
 
 function ApplicantList() {
 	const [data, setData] = useState<Data[]>([]);

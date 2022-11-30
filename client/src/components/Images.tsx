@@ -1,12 +1,6 @@
-interface Gall {
-	images: Img[];
-}
+import { Gallery, Img } from "../interfaces";
 
-interface Img {
-	img: Object;
-}
-
-const Images = ({ images }: Gall) => {
+const Images = ({ images }: Gallery) => {
 	return (
 		<div className="images">
 			{images.map((image: Img) => {

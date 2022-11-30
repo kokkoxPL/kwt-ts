@@ -2,12 +2,12 @@
 	"compilerOptions": {
 		"target": "es5",
 		"module": "commonjs",
-		"rootDir": "./src",
-		"outDir": "./dist",
+		"outDir": "dist",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true
-	}
+	},
+	"include": ["src/**/*"]
 }

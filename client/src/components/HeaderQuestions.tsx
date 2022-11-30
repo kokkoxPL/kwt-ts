@@ -33,16 +33,16 @@ const HeaderQuestions = () => {
 			headColor: "#6e4106",
 		},
 	];
+
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-	const setWindowDimensions = () => {
-		setWindowWidth(window.innerWidth);
-	};
+
+	const setWindowDimensions = () => setWindowWidth(window.innerWidth);
+
 	useEffect(() => {
 		window.addEventListener("resize", setWindowDimensions);
-		return () => {
-			window.removeEventListener("resize", setWindowDimensions);
-		};
+		return () => window.removeEventListener("resize", setWindowDimensions);
 	}, []);
+
 	return (
 		<div className="header_questions" id="hq">
 			{elements.map((element, i) => {

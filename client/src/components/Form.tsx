@@ -1,7 +1,8 @@
-import Participant from "./Participant";
-import React, { useState, useRef } from "react";
+import ParticipantForm from "./ParticipantForm";
+import { useState, useRef, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Data, Participant } from "../interfaces";
 
 const Form = () => {
 	const [name, setName] = useState("");
@@ -9,9 +10,9 @@ const Form = () => {
 	const [school, setSchool] = useState("");
 	const [schoolAddress, setSchoolAddress] = useState("");
 	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState("");
+	const [phone, setPhone] = useState<Number>(0);
 	const [type, setType] = useState("Modelarstwo");
-	const [participants, setParticipants] = useState([]);
+	const [participants, setParticipants] = useState<Participant[]>([]);
 	const [participantsNumber, setParticipantsNumber] = useState(1);
 	const [errorFields, setErrorFields] = useState<String[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,13 +21,13 @@ const Form = () => {
 	const navigate = useNavigate();
 
 	const change = () => {
-		setCaptcha(reRef.current?.getValue() as string);
+		setCaptcha(reRef.current!.getValue() as string);
 	};
 
-	const handleSubmit = async (e: any) => {
+	const handleSubmit = async (e: FormEvent<HTMLElement>) => {
 		e.preventDefault();
 
-		const data = {
+		const data: Omit<Data, "_id"> & { captcha: string } = {
 			name,
 			surname,
 			school,
@@ -49,9 +50,9 @@ const Form = () => {
 
 		setIsSubmitting(true);
 		const response = await fetch(api, body);
-		const json = await response.json();
 
 		if (!response.ok) {
+			const json = await response.json();
 			console.log(json);
 			setErrorFields(json.errorFields);
 		} else {
@@ -126,8 +127,8 @@ const Form = () => {
 						<input
 							type="tel"
 							placeholder="Numer telefonu"
-							onChange={(e) => setPhone(e.target.value)}
-							value={phone}
+							onChange={(e) => setPhone(Number(e.target.value))}
+							value={phone ? phone.toString() : ""}
 							className={errorFields.includes("phone") ? "error" : ""}
 							required
 						/>
@@ -139,7 +140,7 @@ const Form = () => {
 					<hr className="solid" />
 					<div className="uczestnicy">
 						{[...Array(participantsNumber)].map((item, index) => (
-							<Participant
+							<ParticipantForm
 								key={index + 1}
 								participants={participants}
 								setParticipants={setParticipants}
@@ -166,11 +167,7 @@ const Form = () => {
 					sitekey={process.env.REACT_APP_RECAPTCHA as string}
 					ref={reRef}
 				/>
-				<input
-					type="submit"
-					value="Zarejestruj"
-					disabled={!captcha || isSubmitting}
-				/>
+				<input type="submit" value="Zarejestruj" disabled={!captcha || isSubmitting} />
 			</form>
 		</div>
 	);
