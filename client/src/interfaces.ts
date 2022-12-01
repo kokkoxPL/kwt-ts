@@ -1,12 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
 
-interface Participant {
-	id: Number;
-	name: string;
-	surname: string;
-	email: string;
-}
-
 interface Data {
 	_id: string;
 	name: string;
@@ -14,23 +7,26 @@ interface Data {
 	school: string;
 	schoolAddress: string;
 	email: string;
-	phone: Number;
+	phone: number;
 	type: string;
 	participants: Participant[];
 }
 
-interface Gallery {
-	images: Img[];
+interface Participant {
+	id: number;
+	name: string;
+	surname: string;
+	email: string;
 }
 
-interface Img {
-	img: Object;
+interface ImagesArg {
+	images: { img: string }[];
 }
 
 interface ParticipantArg {
 	participants: Participant[];
 	setParticipants: Dispatch<SetStateAction<Participant[]>>;
-	id: Number;
+	id: number;
 }
 
-export type { Participant, Data, Gallery, Img, ParticipantArg };
+export type { Data, Participant, ImagesArg, ParticipantArg };

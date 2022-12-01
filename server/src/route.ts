@@ -11,9 +11,9 @@ interface Data {
 	email: string;
 	school: string;
 	schoolAddress: string;
-	phone: Number;
+	phone: number;
 	type: string;
-	participants: Object[];
+	participants: object[];
 }
 
 router.post("/form", (req: Request, res: Response) => {
@@ -68,7 +68,7 @@ router.post("/form", (req: Request, res: Response) => {
 router.get("/admin", (req: Request, res: Response) => {
 	Form.find()
 		.select("name surname school schoolAddress email phone participants type")
-		.then((result: Object) => res.json(result))
+		.then((result: object) => res.json(result))
 		.catch((err: Error) => console.log(err));
 });
 

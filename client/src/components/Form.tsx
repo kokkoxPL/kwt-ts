@@ -10,11 +10,11 @@ const Form = () => {
 	const [school, setSchool] = useState("");
 	const [schoolAddress, setSchoolAddress] = useState("");
 	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState<Number>(0);
+	const [phone, setPhone] = useState<number>(0);
 	const [type, setType] = useState("Modelarstwo");
 	const [participants, setParticipants] = useState<Participant[]>([]);
 	const [participantsNumber, setParticipantsNumber] = useState(1);
-	const [errorFields, setErrorFields] = useState<String[]>([]);
+	const [errorFields, setErrorFields] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [captcha, setCaptcha] = useState("");
 	const reRef = useRef<ReCAPTCHA>(null);

@@ -1,9 +1,9 @@
-import { Gallery, Img } from "../interfaces";
+import { ImagesArg } from "../interfaces";
 
-const Images = ({ images }: Gallery) => {
+const Images = ({ images }: ImagesArg) => {
 	return (
 		<div className="images">
-			{images.map((image: Img) => {
+			{images.map((image) => {
 				return (
 					<div
 						className="image"
