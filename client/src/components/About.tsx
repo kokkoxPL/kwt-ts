@@ -2,7 +2,7 @@ const About = () => {
 	return (
 		<div className="about" id="about">
 			<div className="aboutBG">
-				<img src="../logo512.png" alt="logo.png" />
+				<img src="logo512.png" alt="logo.png" />
 			</div>
 			<div className="aboutInfo">
 				<p>

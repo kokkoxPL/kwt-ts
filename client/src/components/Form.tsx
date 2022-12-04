@@ -90,7 +90,7 @@ const Form = () => {
 								id="rodzaj"
 								onChange={(e) => setType(e.target.value)}
 								value={type}
-								className={errorFields.includes("") ? "error" : ""}
+								className={errorFields.includes("type") ? "error" : ""}
 								required
 							>
 								<option value="Modelarstwo">Modelarstwo</option>

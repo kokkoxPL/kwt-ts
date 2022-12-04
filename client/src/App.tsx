@@ -1,13 +1,8 @@
-import "./index.css";
-import "./form.css";
-import "./gallery.css";
+import "./styles/index.css";
+import "./styles/form.css";
+import "./styles/gallery.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./fontello/css/fontello.css";
-// import anime from "animejs/lib/anime.es.js"
-
-// import { gsap } from "gsap";
-// import { TextPlugin } from "gsap/TextPlugin";
-// gsap.registerPlugin(TextPlugin);
 
 //Pages
 
@@ -25,11 +20,6 @@ import Footer from "./components/Footer";
 document.title = "Konkurs Wiedzy Technicznej";
 
 function App() {
-	const script = document.createElement("script");
-
-	script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js";
-
-	document.body.appendChild(script);
 	return (
 		<div className="App">
 			<BrowserRouter>

@@ -1,4 +1,3 @@
-// import Navbar from "./Navbar";
 import { useState, useEffect } from "react";
 
 const HeaderQuestions = () => {
@@ -48,6 +47,7 @@ const HeaderQuestions = () => {
 			{elements.map((element, i) => {
 				return (
 					<div
+						key={i}
 						className="Qelements"
 						style={{
 							background: element.bg,

@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
 	const [isActive, setIsActive] = useState(false);
+	let location = useLocation();
+
 	const change = () => setIsActive(!isActive);
 
-	const scroll = (position: string) => {
-		const element = document.getElementById(position) as HTMLElement;
-		element.scrollIntoView({ behavior: "smooth" });
-		change();
-	};
+	useEffect(() => {
+		if (location.hash) {
+			const element = document.getElementById(location.hash.slice(1)) as HTMLElement;
+			element.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [location]);
 
 	return (
 		<div className="menu">
@@ -26,10 +29,10 @@ const Navbar = () => {
 					<h1>KWT</h1>
 				</div>
 				<ul>
-					<li onClick={() => scroll("header")}>
+					<li onClick={change}>
 						<Link to={"/#header"}>STRONA GŁÓWNA</Link>
 					</li>
-					<li onClick={() => scroll("about")}>
+					<li onClick={change}>
 						<Link to={"/#about"}>INFORMACJE</Link>
 					</li>
 					<li onClick={change}>
@@ -40,24 +43,6 @@ const Navbar = () => {
 							<span style={{ color: "red" }}>DOŁĄCZ</span>
 						</Link>
 					</li>
-
-					<li onClick={change}>
-						<Link to={"/"}>
-							<span
-								style={{
-									color: "red",
-									fontWeight: "800",
-									letterSpacing: "8px",
-								}}
-							>
-								AUTORZY
-							</span>
-						</Link>
-					</li>
-
-					{/* <li onClick={change}>
-						<Link to={"/"}>PYTANIA Z POPRZEDNICH LAT</Link>
-					</li> */}
 				</ul>
 			</div>
 		</div>
