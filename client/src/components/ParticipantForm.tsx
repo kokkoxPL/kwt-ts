@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { Participant, ParticipantArg } from "../interfaces";
 
 const ParticipantForm = ({ participants, setParticipants, id }: ParticipantArg) => {

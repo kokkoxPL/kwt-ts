@@ -1,8 +1,9 @@
-import About from "../components/About";
-import HeaderQuestions from "../components/HeaderQuestions";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+
+import About from "../components/About";
+import HeaderQuestions from "../components/HeaderQuestions";
 
 const Home = () => {
 	useEffect(() => {

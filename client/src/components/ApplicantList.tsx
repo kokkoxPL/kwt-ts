@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CSVLink } from "react-csv";
+
 import { Data, Participant } from "../interfaces";
 
 function ApplicantList() {

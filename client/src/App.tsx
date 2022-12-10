@@ -1,21 +1,21 @@
-import "./styles/index.css";
-import "./styles/form.css";
-import "./styles/gallery.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./fontello/css/fontello.css";
 
 //Pages
-
 import Home from "./pages/Home";
 import Join from "./pages/Join";
 import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
 import Teapot from "./pages/Teapot";
 
-//COMPONENTS
-
+//Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+//Styles
+import "./styles/index.css";
+import "./styles/form.css";
+import "./styles/gallery.css";
+import "./fontello/css/fontello.css";
 
 document.title = "Konkurs Wiedzy Technicznej";
 

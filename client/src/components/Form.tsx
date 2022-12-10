@@ -1,7 +1,8 @@
-import ParticipantForm from "./ParticipantForm";
 import { useState, useRef, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+
+import ParticipantForm from "./ParticipantForm";
 import { Data, Participant } from "../interfaces";
 
 const Form = () => {
