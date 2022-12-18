@@ -28,6 +28,8 @@ const Form = () => {
 	const handleSubmit = async (e: FormEvent<HTMLElement>) => {
 		e.preventDefault();
 
+		setErrorFields([]);
+
 		const data: Omit<Data, "_id"> & { captcha: string } = {
 			name,
 			surname,
@@ -56,11 +58,10 @@ const Form = () => {
 			const json = await response.json();
 			console.log(json);
 			setErrorFields(json.errorFields);
+			setIsSubmitting(false);
 		} else {
 			navigate("/");
 		}
-
-		setIsSubmitting(false);
 	};
 
 	return (
@@ -125,6 +126,7 @@ const Form = () => {
 							className={errorFields.includes("email") ? "error" : ""}
 							required
 						/>
+						{errorFields.includes("email") ? "Źle poddany email" : ""}
 						<input
 							type="tel"
 							placeholder="Numer telefonu"
@@ -133,6 +135,7 @@ const Form = () => {
 							className={errorFields.includes("phone") ? "error" : ""}
 							required
 						/>
+						{errorFields.includes("email") ? "Źle poddany numer" : ""}
 					</div>
 				</div>
 

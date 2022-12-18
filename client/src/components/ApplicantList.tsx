@@ -36,7 +36,6 @@ function ApplicantList() {
 			);
 		};
 		getData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -49,7 +48,6 @@ function ApplicantList() {
 						<th>Surname</th>
 						<th>School</th>
 						<th>School Address</th>
-						<th>Phone</th>
 						<th>E-mail</th>
 					</tr>
 				</thead>

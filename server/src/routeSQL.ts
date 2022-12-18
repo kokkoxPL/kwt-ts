@@ -1,11 +1,12 @@
 import { Router, Request, Response } from "express";
-import Form from "./formModel";
+import { createConnection } from "mysql2/promise";
 import validator from "validator";
 
 const router = Router();
 
 interface Data {
 	captcha: string;
+	participants: object[];
 	name: string;
 	surname: string;
 	school: string;
@@ -13,11 +14,10 @@ interface Data {
 	email: string;
 	phone: number;
 	type: string;
-	participants: object[];
 }
 
-router.post("/form", (req: Request, res: Response) => {
-	const { captcha, ...data }: Data = req.body;
+router.post("/form", async (req: Request, res: Response) => {
+	const { captcha, participants, ...data }: Data = req.body;
 
 	if (!captcha) {
 		return res.status(400).json({ err: "No captcha" });
@@ -58,18 +58,32 @@ router.post("/form", (req: Request, res: Response) => {
 		return res.status(400).json({ errorFields });
 	}
 
-	const form = new Form(data);
-	form
-		.save()
+	const connection = createConnection({
+		host: "localhost",
+		user: "root",
+		database: "kwt",
+	});
+
+	(await connection)
+		.query(
+			`INSERT INTO opiekunowie 
+			(imie, nazwisko, szkola, adres_szkoly, email, tel, typ) 
+			VALUES (?, ?, ?, ?, ?, ?, ?)`,
+			Object.values(data)
+		)
 		.then(() => res.sendStatus(200))
 		.catch((err: Error) => res.status(404).json({ error: err.message, errorFields }));
 });
 
-router.get("/admin", (req: Request, res: Response) => {
-	Form.find()
-		.select("name surname school schoolAddress email phone type participants")
-		.then((result: object) => res.json(result))
-		.catch((err: Error) => console.log(err));
+router.get("/admin", async (req: Request, res: Response) => {
+	const connection = await createConnection({
+		host: "localhost",
+		user: "root",
+		database: "kwt",
+	});
+
+	const [rows] = await connection.query(`SELECT * FROM opiekunowie`);
+	res.json(rows);
 });
 
 export default router;

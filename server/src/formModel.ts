@@ -5,6 +5,10 @@ const formSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	surname: {
+		type: String,
+		required: true,
+	},
 	school: {
 		type: String,
 		required: true,

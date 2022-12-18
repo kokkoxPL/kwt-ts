@@ -1,11 +1,14 @@
 const path = require('path');
-const CompressionPlugin = require("compression-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 module.exports = {
   entry: './src/index.tsx',
+  performance: {
+    hints: false
+  },
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js'
@@ -24,6 +27,9 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"]
+        }
       },
       {
         test: /\.tsx?$/,
@@ -48,21 +54,9 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-    minimizer: [
-      (compiler) => {
-        const TerserPlugin = require('terser-webpack-plugin');
-        new TerserPlugin({
-          terserOptions: {
-            compress: {},
-          }
-        }).apply(compiler);
-      }
-    ]
+    minimizer: [new TerserPlugin()]
   },
   plugins: [
-    new CompressionPlugin({
-      test: /\.js(\?.*)?$/i,
-    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: path.join(__dirname, 'public', 'index.html'),
@@ -84,6 +78,6 @@ module.exports = {
     new Dotenv({
       path: `./.env`
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ]
 }

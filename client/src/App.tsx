@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import Join from "./pages/Join";
 import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
-import Teapot from "./pages/Teapot";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -26,11 +25,10 @@ function App() {
 				<Navbar />
 				<div className="pages">
 					<Routes>
-						<Route path="/" element={<Home />} />
 						<Route path="/gallery" element={<Gallery />} />
 						<Route path="/join" element={<Join />} />
 						<Route path="/admin" element={<Admin />} />
-						<Route path="/*" element={<Teapot />} />
+						<Route path="/*" element={<Home />} />
 					</Routes>
 					<Footer />
 				</div>

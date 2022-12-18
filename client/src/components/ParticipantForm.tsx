@@ -9,7 +9,6 @@ const ParticipantForm = ({ participants, setParticipants, id }: ParticipantArg) 
 
 	useEffect(() => {
 		setParticipants([...participants, { id, name, surname, email }]);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -18,7 +17,6 @@ const ParticipantForm = ({ participants, setParticipants, id }: ParticipantArg) 
 				oldData.id === id ? { id, name, surname, email } : oldData
 			)
 		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [name, surname, email]);
 
 	return (
