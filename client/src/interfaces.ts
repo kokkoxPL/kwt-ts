@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
 interface Data {
-	_id: string;
 	name: string;
 	surname: string;
 	school: string;

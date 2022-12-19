@@ -4,7 +4,7 @@ import { CSVLink } from "react-csv";
 import { Data, Participant } from "../interfaces";
 
 function ApplicantList() {
-	const [data, setData] = useState<Data[]>([]);
+	const [data, setData] = useState<(Data & { _id: string })[]>([]);
 	const [students, setStudent] = useState<Participant[]>([]);
 
 	const teacherHeader = [
@@ -29,7 +29,7 @@ function ApplicantList() {
 		const getData = async () => {
 			const response = await fetch("/api/admin").then((res) => res.json());
 			setData(response);
-			response.forEach((e: Data) =>
+			response.forEach((e: Data & { _id: string }) =>
 				e.participants.forEach((i: Participant) =>
 					setStudent(() => [...students, { teacher_id: e._id, ...i }])
 				)

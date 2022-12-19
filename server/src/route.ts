@@ -4,8 +4,17 @@ import validator from "validator";
 
 const router = Router();
 
+interface Participants {
+	id?: number;
+	opiekun_id?: number;
+	name: string;
+	surname: string;
+	email: string;
+}
+
 interface Data {
 	captcha: string;
+	participants: Participants[];
 	name: string;
 	surname: string;
 	school: string;
@@ -13,7 +22,6 @@ interface Data {
 	email: string;
 	phone: number;
 	type: string;
-	participants: object[];
 }
 
 router.post("/form", (req: Request, res: Response) => {
@@ -28,10 +36,7 @@ router.post("/form", (req: Request, res: Response) => {
 
 	fetch(verifyURL, { method: "POST" })
 		.then((response) => {
-			if (response.status === 200) {
-				console.log("Successful");
-			} else {
-				console.log("Failed");
+			if (response.status !== 200) {
 				return res.status(401).json({ captcha: "Failed" });
 			}
 		})
@@ -49,7 +54,6 @@ router.post("/form", (req: Request, res: Response) => {
 		errorFields.push("email");
 	}
 
-	console.log(data.phone.toString().length);
 	if (data.phone.toString().length !== 9) {
 		errorFields.push("phone");
 	}

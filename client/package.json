@@ -6,8 +6,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"dev": "webpack serve --mode development --open --hot",
-		"build": "webpack --mode production",
-		"eject": "react-scripts eject"
+		"build": "webpack --mode production"
 	},
 	"dependencies": {
 		"gsap": "^3.11.3",

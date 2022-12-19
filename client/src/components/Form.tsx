@@ -18,11 +18,14 @@ const Form = () => {
 	const [errorFields, setErrorFields] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [captcha, setCaptcha] = useState("");
-	const reRef = useRef<ReCAPTCHA>(null);
+	const captchaRef = useRef<ReCAPTCHA>(null);
 	const navigate = useNavigate();
 
-	const change = () => {
-		setCaptcha(reRef.current!.getValue() as string);
+	const change = async () => {
+		if (captchaRef && captchaRef.current && captchaRef.current.reset) {
+			captchaRef.current.reset();
+		}
+		setCaptcha(captchaRef.current!.getValue() as string);
 	};
 
 	const handleSubmit = async (e: FormEvent<HTMLElement>) => {
@@ -30,7 +33,7 @@ const Form = () => {
 
 		setErrorFields([]);
 
-		const data: Omit<Data, "_id"> & { captcha: string } = {
+		const data: Data & { captcha: string } = {
 			name,
 			surname,
 			school,
@@ -42,7 +45,7 @@ const Form = () => {
 			captcha,
 		};
 
-		const api = "/api/form";
+		const api = "http://localhost:4000/api/form";
 		const body = {
 			method: "POST",
 			headers: {
@@ -73,7 +76,9 @@ const Form = () => {
 						<input
 							type="text"
 							placeholder="Szkoła"
-							onChange={(e) => setSchool(e.target.value)}
+							onChange={(e) => {
+								setSchool(e.target.value);
+							}}
 							value={school}
 							className={errorFields.includes("school") ? "error" : ""}
 							required
@@ -138,7 +143,6 @@ const Form = () => {
 						{errorFields.includes("email") ? "Źle poddany numer" : ""}
 					</div>
 				</div>
-
 				<div className="uczniowie">
 					<h1>UCZNIOWIE</h1>
 					<hr className="solid" />
@@ -169,9 +173,10 @@ const Form = () => {
 					className="captcha"
 					onChange={change}
 					sitekey={process.env.REACT_APP_RECAPTCHA as string}
-					ref={reRef}
+					ref={captchaRef}
+					theme="dark"
 				/>
-				<input type="submit" value="Zarejestruj" disabled={!captcha || isSubmitting} />
+				<input type="submit" value="Zarejestruj" /*disabled={!captcha || isSubmitting}*/ />
 			</form>
 		</div>
 	);

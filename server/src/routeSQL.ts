@@ -4,9 +4,17 @@ import validator from "validator";
 
 const router = Router();
 
+interface Participants {
+	id?: number;
+	opiekun_id?: number;
+	name: string;
+	surname: string;
+	email: string;
+}
+
 interface Data {
 	captcha: string;
-	participants: object[];
+	participants: Participants[];
 	name: string;
 	surname: string;
 	school: string;
@@ -28,10 +36,7 @@ router.post("/form", async (req: Request, res: Response) => {
 
 	fetch(verifyURL, { method: "POST" })
 		.then((response) => {
-			if (response.status === 200) {
-				console.log("Successful");
-			} else {
-				console.log("Failed");
+			if (response.status !== 200) {
 				return res.status(401).json({ captcha: "Failed" });
 			}
 		})
@@ -49,7 +54,6 @@ router.post("/form", async (req: Request, res: Response) => {
 		errorFields.push("email");
 	}
 
-	console.log(data.phone.toString().length);
 	if (data.phone.toString().length !== 9) {
 		errorFields.push("phone");
 	}
@@ -58,32 +62,36 @@ router.post("/form", async (req: Request, res: Response) => {
 		return res.status(400).json({ errorFields });
 	}
 
-	const connection = createConnection({
-		host: "localhost",
-		user: "root",
-		database: "kwt",
+	const connection = await createConnection({
+		host: process.env.host,
+		user: process.env.user,
+		database: process.env.database,
 	});
 
-	(await connection)
-		.query(
+	connection
+		.execute(
 			`INSERT INTO opiekunowie 
 			(imie, nazwisko, szkola, adres_szkoly, email, tel, typ) 
 			VALUES (?, ?, ?, ?, ?, ?, ?)`,
 			Object.values(data)
 		)
+		.then((result) => {
+			const id = Object.values(result[0])[2];
+
+			participants.map((participant) => {
+				delete participant.id;
+				participant.opiekun_id = id;
+
+				connection.execute(
+					`INSERT INTO uczniowie
+					(imie, nazwisko, email, opiekun_id)
+					VALUES (?, ?, ?, ?)`,
+					Object.values(participant)
+				);
+			});
+		})
 		.then(() => res.sendStatus(200))
-		.catch((err: Error) => res.status(404).json({ error: err.message, errorFields }));
-});
-
-router.get("/admin", async (req: Request, res: Response) => {
-	const connection = await createConnection({
-		host: "localhost",
-		user: "root",
-		database: "kwt",
-	});
-
-	const [rows] = await connection.query(`SELECT * FROM opiekunowie`);
-	res.json(rows);
+		.catch(() => res.status(404).json({ errorFields }));
 });
 
 export default router;

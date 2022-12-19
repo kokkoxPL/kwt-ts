@@ -78,6 +78,6 @@ module.exports = {
     new Dotenv({
       path: `./.env`
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ]
 }

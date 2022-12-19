@@ -13,20 +13,20 @@ app.use(json());
 app.use(compression());
 
 const createDatabase = async () => {
-	let connection = createConnection({
-		host: "localhost",
-		user: "root",
+	let connection = await createConnection({
+		host: process.env.host,
+		user: process.env.user,
 	});
 
-	(await connection).query("CREATE DATABASE IF NOT EXISTS kwt");
+	connection.query("CREATE DATABASE IF NOT EXISTS kwt");
 
-	connection = createConnection({
-		host: "localhost",
-		user: "root",
-		database: "kwt",
+	connection = await createConnection({
+		host: process.env.host,
+		user: process.env.user,
+		database: process.env.database,
 	});
 
-	(await connection).query(
+	connection.query(
 		`CREATE TABLE IF NOT EXISTS opiekunowie
     (id int AUTO_INCREMENT PRIMARY KEY,
     imie varchar(30), nazwisko varchar(30),
@@ -34,11 +34,11 @@ const createDatabase = async () => {
     email varchar(50), tel int(9), typ varchar(30))`
 	);
 
-	(await connection).query(
+	connection.query(
 		`CREATE TABLE IF NOT EXISTS uczniowie
     (id int AUTO_INCREMENT PRIMARY KEY,
     imie varchar(30), nazwisko varchar(30),
-    opiekun_id int, email varchar(50))`
+		email varchar(50), opiekun_id int)`
 	);
 };
 
