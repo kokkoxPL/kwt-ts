@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 @import url("animations.css");
 @import url("footer.css");
@@ -39,7 +39,7 @@ body {
 	grid-template-columns: repeat(3, fit-content);
 }
 
-.sliderNote{
+.sliderNote {
 	background: white;
 	position: fixed;
 	top: 0;
@@ -49,30 +49,29 @@ body {
 	z-index: 5;
 }
 
-.sliderNote p{
-	font-size: 90px;
+.sliderNote p {
+	font-size: 6vw;
 	text-align: justify;
 	margin: auto;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 
-.hideText{
+.hideText {
 	overflow: hidden;
 	position: relative;
-	top: 30%;
-	left: 50%;
-	transform: translatex(-20%);
+	left: 10%;
 }
-.hiddenText{
+
+.hiddenText {
 	transform: translateY(100%);
 	font-weight: 800;
 }
 
-.slider{
+.slider {
 	background: rgb(80, 80, 80);
 	position: fixed;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 7;
@@ -85,7 +84,8 @@ body {
 	display: grid;
 	grid-template-columns: 100%;
 	grid-template-rows: 100%;
-	background: linear-gradient(135deg, transparent ,rgba(38, 114, 82, 0.2) , rgba(0, 0, 0, 0.8)),url("https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=1600");
+	background: linear-gradient(135deg, transparent, rgba(38, 114, 82, 0.2), rgba(0, 0, 0, 0.8)),
+		url("https://images.pexels.com/photos/7238759/pexels-photo-7238759.jpeg?auto=compress&cs=tinysrgb&w=1600");
 	/* background: url("https://wallpapercave.com/wp/wp9473649.jpg"); */
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -127,7 +127,6 @@ span {
 	margin: auto;
 	text-align: center;
 	row-gap: 5%;
-
 }
 
 .kwt {
@@ -147,12 +146,14 @@ span {
 .kwt h1 {
 	margin: 0;
 }
-.kwtI{
+
+.kwtI {
 	position: relative;
 	left: 230px;
 	opacity: 0;
 }
-.kwtIII{
+
+.kwtIII {
 	position: relative;
 	left: -230px;
 	opacity: 0;
@@ -168,7 +169,7 @@ span {
 	z-index: 2;
 	margin: auto;
 	word-spacing: 15px;
-	background: rgba(0, 0, 0, .3);
+	background: rgba(0, 0, 0, 0.3);
 	padding: 30px;
 	animation: shadow 4s both infinite;
 	border-radius: 5px;
@@ -176,7 +177,7 @@ span {
 
 .desc p {
 	animation: header_content 4s both infinite;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 
 .sign {
@@ -188,7 +189,7 @@ span {
 	justify-content: center;
 	margin: auto;
 	overflow: hidden;
-	transition: .3s;
+	transition: 0.3s;
 }
 
 .sign:hover {
@@ -214,7 +215,7 @@ span {
 .socials a {
 	font-size: 25px;
 	color: rgb(0, 0, 0);
-	transition: .3s;
+	transition: 0.3s;
 	transform: rotate(90deg);
 }
 
@@ -367,6 +368,10 @@ span {
 	text-align: justify;
 	display: grid;
 	grid-template-columns: 40% 60%;
+	color: white;
+	background: url("https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-1284x2778-8324.png");
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 .aboutBG {
@@ -384,13 +389,12 @@ span {
 	font-size: 21px;
 }
 
-
 /* HEADER QUESTIONS */
 .header_questions {
 	display: grid;
 	grid-template-rows: repeat(3, auto);
 	justify-content: center;
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Montserrat", sans-serif;
 	font-weight: 500;
 	letter-spacing: 1px;
 	z-index: 4;
@@ -401,19 +405,23 @@ span {
 	grid-template-columns: repeat(2, 50%);
 	margin: auto;
 	padding: 30px 0;
-	box-shadow: 0px -10px 35px #331616;
+	box-shadow: 0px -10px 35px #000000;
 	/* z-index: -1; */
 }
 
-.Qelements:hover .Qimage{
+.Qelements:hover .Qimage {
 	transform: rotate(0deg);
 	border-radius: 50%;
 }
 
-
-.Qelements:hover .Qimg{
-	left:0;
+.Qelements:hover .Qimg {
+	left: 0;
 	border-radius: 50%;
+}
+
+.Qimage,
+.content {
+	opacity: 0;
 }
 
 .Qimage {
@@ -422,7 +430,7 @@ span {
 	aspect-ratio: 1/1;
 	/* transform: rotate(10deg); */
 	/* border-radius: 10px; */
-	transition: .3s;
+	transition: 0.3s;
 	overflow: hidden;
 	margin: auto;
 	background-size: cover;
@@ -434,15 +442,14 @@ span {
 	aspect-ratio: 1/1;
 	z-index: 4;
 	position: relative;
-	left:100%;
-	transition: .6s;
+	left: 100%;
+	transition: 0.6s;
 	/* background: linear-gradient(135deg, rgba(150, 113, 71,.6), rgba(0,0,0,.8)); */
 	/* background: linear-gradient(135deg, rgba(55, 163, 116, 0.5), rgba(0, 0, 0, 0.5)); */
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(38, 114, 82, 0.7));
 }
 
-
-.content{
+.content {
 	height: fit-content;
 	width: 90%;
 	text-align: center;
@@ -450,12 +457,10 @@ span {
 	margin: auto;
 	align-items: center;
 	position: relative;
-	font-family: 'Montserrat', sans-serif;
-	
-	
+	font-family: "Montserrat", sans-serif;
+
 	overflow-y: hidden;
 }
-
 
 .content p {
 	font-size: 22px;
@@ -479,7 +484,6 @@ span {
 	}
 
 	.nav_active {
-
 		position: fixed;
 		top: 0;
 		right: 0%;
@@ -497,7 +501,6 @@ span {
 	.desc {
 		width: 80%;
 	}
-
 }
 
 @media screen and (max-width: 1120px) {
@@ -505,6 +508,7 @@ span {
 		display: grid;
 		grid-template-columns: 100%;
 	}
+
 	.header_questions {
 		display: grid;
 		grid-template-columns: 100%;
@@ -513,20 +517,19 @@ span {
 
 	.Qelements {
 		grid-template-columns: 100%;
-		grid-template-rows: repeat(2,auto);
+		grid-template-rows: repeat(2, auto);
 		padding-top: 30px;
 		padding-bottom: 200px;
 		/* margin: 20px 0; */
 	}
 
-	.content{
+	.content {
 		height: 100%;
-		top:20%;
+		top: 20%;
 	}
 }
 
 @media screen and (max-width: 1000px) {
-
 	.nav_menu {
 		width: 90%;
 		position: fixed;
@@ -562,7 +565,6 @@ span {
 	}
 }
 
-
 @media screen and (max-width: 600px) {
 	.kwt {
 		font-size: 100px;
@@ -582,11 +584,10 @@ span {
 		right: -30%;
 	}
 
-	.Qimage{
+	.Qimage {
 		width: 80%;
-		}
+	}
 }
-
 
 @media screen and (max-width: 450px) {
 	.kwt {

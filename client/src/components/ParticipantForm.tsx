@@ -22,28 +22,24 @@ const ParticipantForm = ({ participants, setParticipants, id }: ParticipantArg) 
 	return (
 		<div className="uczestnik">
 			<h1>UCZEŃ {id.toString()}</h1>
-			<input
-				type="text"
-				placeholder="Imię"
-				onChange={(e) => setName(e.target.value)}
-				value={name}
-				autoFocus
-				required
-			/>
-			<input
-				type="text"
-				placeholder="Nazwisko"
-				onChange={(e) => setSurname(e.target.value)}
-				value={surname}
-				required
-			/>
-			<input
-				type="email"
-				placeholder="E-mail"
-				onChange={(e) => setEmail(e.target.value)}
-				value={email}
-				required
-			/>
+			<div className="participant">
+				<input
+					type="text"
+					onChange={(e) => setName(e.target.value)}
+					value={name}
+					autoFocus
+					required
+				/>
+				<span>Imię</span>
+			</div>
+			<div className="participant">
+				<input type="text" onChange={(e) => setSurname(e.target.value)} value={surname} required />
+				<span>Nazwisko</span>
+			</div>
+			<div className="participant">
+				<input type="email" onChange={(e) => setEmail(e.target.value)} value={email} required />
+				<span>E-mail</span>
+			</div>
 		</div>
 	);
 };

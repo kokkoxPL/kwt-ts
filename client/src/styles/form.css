@@ -36,6 +36,7 @@ input[type="submit"]:hover {
 	gap: 20px;
 	margin: auto;
 	justify-content: center;
+	margin-top: 20px;
 }
 
 .personal,
@@ -45,8 +46,58 @@ input[type="submit"]:hover {
 	justify-content: center;
 }
 
+.person {
+	position: relative;
+	width: 400px;
+}
+
+.person input {
+	position: relative;
+	width: 100%;
+	z-index: 2;
+}
+
+.person span {
+	position: absolute;
+	left: 0;
+	transition: 0.5s;
+	transform: translateY(-40px);
+}
+
+.person input:valid ~ span,
+.person input:focus ~ span {
+	transform: translateY(-70px);
+	opacity: 1;
+	transition: 0.5s;
+}
+
 .school input {
 	margin: auto;
+}
+
+.participant {
+	position: relative;
+	width: 300px;
+	margin: 25px 0;
+}
+
+.participant input {
+	position: relative;
+	width: 100%;
+	z-index: 2;
+}
+
+.participant span {
+	position: absolute;
+	left: 0;
+	transition: 0.5s;
+	transform: translateY(-40px);
+}
+
+.participant input:valid ~ span,
+.participant input:focus ~ span {
+	transform: translateY(-70px);
+	transition: 0.5s;
 }
 
 select {
@@ -62,8 +113,7 @@ select option {
 
 .main {
 	width: 100%;
-	min-height: 160vh;
-	height: auto;
+	min-height: 200vh;
 	display: grid;
 	grid-template-columns: 100%;
 	grid-template-rows: 25% 75%;

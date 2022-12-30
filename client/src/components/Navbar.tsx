@@ -30,7 +30,7 @@ const Navbar = () => {
 				</div>
 				<ul>
 					<li onClick={change}>
-						<Link to={"/"}>STRONA GŁÓWNA</Link>
+						<Link to={"/#header"}>STRONA GŁÓWNA</Link>
 					</li>
 					<li onClick={change}>
 						<Link to={"/#about"}>INFORMACJE</Link>
